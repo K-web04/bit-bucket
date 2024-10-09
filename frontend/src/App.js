@@ -42,11 +42,12 @@ const App = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('image', image);  // Ensure the key here is 'image'
+    formData.append('image', image);
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL;
-      const res = await axios.post(`${backendUrl}/api/files/upload`, formData, {
+      // const backendUrl = process.env.REACT_APP_BACKEND_URL;
+      const backendUrl = process.env.REACT_APP_API_URL;
+      const res = await axios.post(`${backendUrl}/files/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setMessage(res.data.message);
